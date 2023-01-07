@@ -22,6 +22,16 @@ class Card extends Model
         'description',
     ];
 
+    public function getStatusAttribute(): bool
+    {
+        if ($this->trashed()) {
+            return false;
+        }else if ($this->kanbanColumn->trashed()){
+            return false;
+        }
+        return true;
+    }
+
     /**
      * The attributes that should be mutated to dates.
      *
@@ -32,9 +42,9 @@ class Card extends Model
 
     // relations
 
-    public function KanbanColumn(): BelongsTo
+    public function kanbanColumn(): BelongsTo
     {
-        return $this->belongsTo(KanbanColumn::class);
+        return $this->belongsTo(KanbanColumn::class)->withTrashed();
     }
 
 

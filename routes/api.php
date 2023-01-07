@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\API\CardController;
 use App\Http\Controllers\API\KanbanColumnController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RegisterController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +24,5 @@ Route::controller(RegisterController::class)->group(function(){
 
 Route::middleware('auth:sanctum')->group( function () {
     Route::resource('kanban_columns', KanbanColumnController::class);
+    Route::resource('cards', CardController::class);
 });

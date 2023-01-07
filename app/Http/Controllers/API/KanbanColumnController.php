@@ -31,6 +31,7 @@ class KanbanColumnController extends BaseController
         $validated = $request->validated();
         $kanbanColumn = KanbanColumn::create($validated);
         return $this->sendResponse(new KanbanColumnResource($kanbanColumn), "created successufully");
+
     }
 
     /**
@@ -56,6 +57,7 @@ class KanbanColumnController extends BaseController
         $validated = $request->validated();
         $kanbanColumn->update($validated);
         return $this->sendResponse(new KanbanColumnResource($kanbanColumn), "updated successufully");
+
     }
 
     /**
