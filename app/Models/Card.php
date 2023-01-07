@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class kanbanColumn extends Model
+class Card extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $table= "kanban_columns";
-
+    protected $table = "cards";
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +19,7 @@ class kanbanColumn extends Model
      */
     protected $fillable = [
         'title',
+        'description',
     ];
 
     /**
@@ -27,5 +28,14 @@ class kanbanColumn extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+
+    // relations
+
+    public function KanbanColumn(): BelongsTo
+    {
+        return $this->belongsTo(KanbanColumn::class);
+    }
+
 
 }

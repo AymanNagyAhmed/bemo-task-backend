@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kanban_columns', function (Blueprint $table) {
+        Schema::create('cards', function (Blueprint $table) {
             $table->id();
-            $table->string('title',255);
+            $table->string('title', 255);
+            $table->text('description');
+
+            $table->unsignedBigInteger('kanban_column_id')->index();
+            $table->foreign('kanban_column_id')->references('id')->on('kanban_columns')->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kanban_columns');
+        Schema::dropIfExists('cards');
     }
 };

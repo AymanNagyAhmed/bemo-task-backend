@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\KanbanColumn;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class KanbanColumnSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,10 @@ class KanbanColumnSeeder extends Seeder
      */
     public function run()
     {
-        KanbanColumn::factory()->count(5)->create();
+        User::create([
+            'name' => 'test',
+            'email' => 'test@test.com',
+            'password' => bcrypt('password'),
+        ]);
     }
 }

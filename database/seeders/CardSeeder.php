@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\KanbanColumn;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class KanbanColumnSeeder extends Seeder
+class CardSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +14,6 @@ class KanbanColumnSeeder extends Seeder
      */
     public function run()
     {
-        KanbanColumn::factory()->count(5)->create();
+        //
     }
 }

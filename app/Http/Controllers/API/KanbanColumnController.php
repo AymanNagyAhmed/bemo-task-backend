@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Requests\StorekanbanColumnRequest;
-use App\Http\Requests\UpdatekanbanColumnRequest;
-use App\Models\kanbanColumn;
+use App\Http\Requests\StoreKanbanColumnRequest;
+use App\Http\Requests\UpdateKanbanColumnRequest;
+use App\Models\KanbanColumn;
 use App\Http\Controllers\API\BaseController;
 use App\Http\Resources\KanbanColumnResource;
 
@@ -17,16 +17,16 @@ class KanbanColumnController extends BaseController
      */
     public function index()
     {
-        return $this->sendResponse(KanbanColumnResource::collection(kanbanColumn::all()), "retrieved successufully");
+        return $this->sendResponse(KanbanColumnResource::collection(KanbanColumn::all()), "retrieved successufully");
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorekanbanColumnRequest  $request
+     * @param  \App\Http\Requests\StoreKanbanColumnRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorekanbanColumnRequest $request)
+    public function store(StoreKanbanColumnRequest $request)
     {
         $validated = $request->validated();
         $kanbanColumn = KanbanColumn::create($validated);
@@ -36,10 +36,10 @@ class KanbanColumnController extends BaseController
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\kanbanColumn  $kanbanColumn
+     * @param  \App\Models\KanbanColumn  $kanbanColumn
      * @return \Illuminate\Http\Response
      */
-    public function show(kanbanColumn $kanbanColumn)
+    public function show(KanbanColumn $kanbanColumn)
     {
         return $this->sendResponse(new KanbanColumnResource($kanbanColumn), "retrieved successufully");
     }
@@ -47,11 +47,11 @@ class KanbanColumnController extends BaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatekanbanColumnRequest  $request
-     * @param  \App\Models\kanbanColumn  $kanbanColumn
+     * @param  \App\Http\Requests\UpdateKanbanColumnRequest  $request
+     * @param  \App\Models\KanbanColumn  $kanbanColumn
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatekanbanColumnRequest $request, kanbanColumn $kanbanColumn)
+    public function update(UpdateKanbanColumnRequest $request, KanbanColumn $kanbanColumn)
     {
         $validated = $request->validated();
         $kanbanColumn->update($validated);
@@ -61,10 +61,10 @@ class KanbanColumnController extends BaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\kanbanColumn  $kanbanColumn
+     * @param  \App\Models\KanbanColumn  $kanbanColumn
      * @return \Illuminate\Http\Response
      */
-    public function destroy(kanbanColumn $kanbanColumn)
+    public function destroy(KanbanColumn $kanbanColumn)
     {
         $kanbanColumn->delete();
         return  $this->sendResponse([], "deleted Successfully");
