@@ -20,6 +20,7 @@ class Card extends Model
     protected $fillable = [
         'title',
         'description',
+        'kanban_column_id',
     ];
 
     public function getStatusAttribute(): bool

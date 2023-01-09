@@ -36,7 +36,6 @@ class RegisterRequest extends FormRequest
         ];
     }
     public function failedValidation(Validator $validator)
-
     {
 
         throw new HttpResponseException(response()->json([
@@ -47,6 +46,6 @@ class RegisterRequest extends FormRequest
 
             'data'      => $validator->errors()
 
-        ]));
+        ],400));
     }
 }

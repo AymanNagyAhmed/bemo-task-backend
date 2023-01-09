@@ -19,6 +19,7 @@ class CardResource extends JsonResource
             'title' => $this->title,
             'kanban_column_id'=>$this->kanban_column_id,
             'status' => $this->status,
+            'description'=>$this->description,
         ];
     }
 }
